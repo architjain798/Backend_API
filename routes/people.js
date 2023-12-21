@@ -5,8 +5,10 @@ const router = express.Router();
 const axios = require("axios");
 const redis = require("../redis/redis-client");
 
+require("dotenv").config();
+
 const makeCallToFilmAPI = async () => {
-  let response = await axios.get("https://swapi.dev/api/people");
+  let response = await axios.get(process.env.EXTERNAL_PEOPLE_API);
   console.log("response", response);
   await redis.set("peoples", JSON.stringify(response?.data?.results));
   await redis.expire("peoples", 1800);
@@ -50,7 +52,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// POST request for /api/films
 router.get("/gender-count/:genderType", async (req, res) => {
   try {
     let genderInput = req.params.genderType;

@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+require('dotenv').config()
 const app = express();
 
 // Middleware
@@ -17,6 +17,6 @@ const peoplesRoutes = require("./routes/people");
 
 app.use("/api/peoples", peoplesRoutes);
 
-app.listen(process.env.PORT || 8080, () => {
-  console.log("server started");
+app.listen(process.env.PORT, () => {
+  console.log(`server started at ${}PORT}`);
 });

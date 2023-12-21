@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const redis = require("./redis/redis-client");
 
 const app = express();
 

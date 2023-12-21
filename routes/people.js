@@ -84,16 +84,16 @@ router.get("/height/:heightInput", async (req, res) => {
     if (peopleCache) {
       let peopleData = JSON.parse(peopleCache);
 
-      let cnt = getNameGreaterThanHeight(peopleData, heightInput);
+      let userList = getNameGreaterThanHeight(peopleData, heightInput);
 
-      return res.status(200).send({ count: cnt });
+      return res.status(200).send({ userList: userList });
     }
 
     let response = await makeCallToFilmAPI();
 
-    let cnt = getNameGreaterThanHeight(response, heightInput);
+    let userList = getNameGreaterThanHeight(response, heightInput);
 
-    return res.status(200).send({ count: cnt });
+    return res.status(200).send({ userList: userList });
   } catch (error) {
     console.log(error?.message);
     res.status(500).json({ error: "Internal Server Error" });

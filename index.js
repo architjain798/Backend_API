@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const redis = require("./redis/redis-client");
 
 const app = express();
@@ -14,12 +15,12 @@ app.get("/", (req, res) => {
 
 // Use routes from the "routes" folder
 const filmsRoutes = require("./routes/films");
-const peoplesRoutes = require("./routes/people");
-const planetsRoutes = require("./routes/planet");
+// const peoplesRoutes = require("./routes/people");
+// const planetsRoutes = require("./routes/planet");
 
 app.use("/api/films", filmsRoutes);
-app.use("/api/peoples", peoplesRoutes);
-app.use("/api/planets", planetsRoutes);
+// app.use("/api/peoples", peoplesRoutes);
+// app.use("/api/planets", planetsRoutes);
 
 app.listen(process.env.PORT || 8080, () => {
   console.log("server started");

@@ -14,13 +14,9 @@ app.get("/", (req, res) => {
 });
 
 // Use routes from the "routes" folder
-const filmsRoutes = require("./routes/films");
-// const peoplesRoutes = require("./routes/people");
-// const planetsRoutes = require("./routes/planet");
+const peoplesRoutes = require("./routes/people");
 
-app.use("/api/films", filmsRoutes);
-// app.use("/api/peoples", peoplesRoutes);
-// app.use("/api/planets", planetsRoutes);
+app.use("/api/peoples", peoplesRoutes);
 
 app.listen(process.env.PORT || 8080, () => {
   console.log("server started");
